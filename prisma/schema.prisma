@@ -27,5 +27,24 @@ model Product {
   image String
   categoryId  Int //llave foranea, solo una categoria
   category  Category @relation(fields: [categoryId], references: [id])
+  orderItems  OrderProducts[]
 }
 
+model Order {
+  id      Int   @id   @default(autoincrement()) 
+  name    String
+  total   Float
+  date    DateTime  @default(now())
+  status  Boolean   @default(false)
+  orderReadyAt  DateTime?
+  orderProducts OrderProducts[] //relacion de muchos a muchos
+}
+
+model OrderProducts {
+  id      Int   @id   @default(autoincrement()) 
+  orderId Int
+  order   Order @relation(fields: [orderId], references: [id])
+  productid Int
+  product Product @relation(fields: [productid], references: [id])
+  quantity  Int
+}

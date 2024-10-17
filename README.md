@@ -1,6 +1,12 @@
 # Quick Server
 Aplicación para administrar quioscos de comida rápida, usando Next.js , app router, prisma
 
+- Next.js , server actions
+- Prisma ORM
+- Zustand
+- Zod
+
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
