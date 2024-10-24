@@ -1,4 +1,4 @@
-import Logo from "../ui/logo"
+import Logo from "../ui/Logo"
 import AdminRoute from "./AdminRoute"
 
 const adminNavigation = [
