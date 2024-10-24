@@ -1,10 +1,8 @@
 "use client"
 import useSWR from "swr";
-import OrderCard from "@/components/order/OrderCard";
-import Heading from "@/components/ui/Heading";
+import Logo from "@/components/ui/logo";
 import { OrderWithProducts } from "@/src/types";
-
-
+import LatestOrderItem from "@/components/order/LatestOrderItem";
 
 export default function OrdersPage() {
 
@@ -12,7 +10,7 @@ export default function OrdersPage() {
     const fetcher = () => fetch(url).then(res => res.json()).then(data => data)
     const { data, error, isLoading } = useSWR<OrderWithProducts[]>(url, fetcher, {
         refreshInterval: 60000,
-        revalidateOnFocus: false
+        revalidateOnFocus: false // para no ahcer consultas cuando se cambia de ventana
     })
     //const orders = await getPendingOrders()
     //console.log(JSON.stringify(orders, null, 2))
@@ -25,29 +23,20 @@ export default function OrdersPage() {
 
     if (data) return (
         <>
-            <Heading>Administrar Ordenes</Heading>
-
-            {/**
-             * <form action={refresOrders}
-            >
-                <input
-                    type="submit"
-                    value="Actualizar ordenes"
-                    className="bg-amber-400 w-full lg:w-auto text-xl px-10 py-3 text-center font-bold cursor-pointer"
-                />
-            </form>
-             */}
+            <h1 className="text-center mt-20 text-6xl font-black"> Ordenes Listas</h1>
+            <Logo />
 
             {data.length ? (
-                <div className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-5 mt-5">
+                <div className="grid grid-cols-1 gap-5 max-w-5xl mx-auto mt-10">
                     {data.map(order => (
-                        <OrderCard
+                        <LatestOrderItem
                             key={order.id}
                             order={order}
                         />
                     ))}
+
                 </div>
-            ) : <p className="text-center">No hay ordenes</p>}
+            ) : <p className="text-center my-10">No hay ordenes listas</p>}
         </>
     )
 }
