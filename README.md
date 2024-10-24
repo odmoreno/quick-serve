@@ -7,6 +7,7 @@ Aplicación para administrar quioscos de comida rápida, usando:
 - Typescript
 - Prisma ORM
 - Zod
+- Zustand
 
 ## Getting Started
 

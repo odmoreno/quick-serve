@@ -10,7 +10,7 @@ export default function OrdersPage() {
 
     const url = '/admin/orders/api'
     const fetcher = () => fetch(url).then(res => res.json()).then(data => data)
-    const { data, error, isLoading } = useSWR<OrderWithProducts[]>(url, fetcher, {
+    const { data, isLoading } = useSWR<OrderWithProducts[]>(url, fetcher, {
         refreshInterval: 60000,
         revalidateOnFocus: false
     })
@@ -21,7 +21,7 @@ export default function OrdersPage() {
     //    revalidatePath('/admin/orders')
     //}
 
-    if (isLoading) return <p>'Cargando.. '</p>
+    if (isLoading) return <p>Cargando..</p>
 
     if (data) return (
         <>

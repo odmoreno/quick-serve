@@ -14,6 +14,7 @@ export default function ImageUpload({ image }: { image: string | undefined }) {
             onSuccess={(result, { widget }) => {
                 if (result.event === 'success') {
                     widget.close()
+                    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                     // @ts-ignore
                     setImageUrl(result.info?.secure_url)
                 }

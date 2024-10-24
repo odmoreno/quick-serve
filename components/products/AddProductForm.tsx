@@ -1,6 +1,4 @@
 "use client"
-import { Children } from "react";
-import ProductForm from "./ProductForm";
 import { ProductSchema } from "@/src/schema";
 import { toast } from "react-toastify";
 import { createProduct } from "@/actions/create-product-action";
