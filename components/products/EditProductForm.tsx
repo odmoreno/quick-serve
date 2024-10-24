@@ -1,13 +1,13 @@
 "use client"
-import { Children } from "react";
-import ProductForm from "./ProductForm";
 import { ProductSchema } from "@/src/schema";
 import { toast } from "react-toastify";
-import { createProduct } from "@/actions/create-product-action";
-import { useRouter } from "next/navigation";
+import { useRouter, useParams } from "next/navigation";
+import { updateProduct } from "@/actions/update-product-action";
 
 export default function EditProductForm({ children }: { children: React.ReactNode }) {
     const router = useRouter()
+    const params = useParams()
+    const id = +params.id!
 
     const handleSubmit = async (formData: FormData) => {
         const data = {
@@ -24,14 +24,15 @@ export default function EditProductForm({ children }: { children: React.ReactNod
             return
         }
 
-        const response = await createProduct(result.data)
+
+        const response = await updateProduct(result.data, id)
         if (response?.errors) {
             response.errors.forEach(issue => {
                 toast.error(issue.message)
             })
             return
         }
-        toast.success('Product creado correctamente')
+        toast.success('Product Actualizado correctamente')
         router.push('/admin/products')
     }
 
