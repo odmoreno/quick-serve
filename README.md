@@ -11,6 +11,18 @@ Aplicación para administrar quioscos de comida rápida, usando:
 
 [Quick serve App](https://vercel.com/api/toolbar/link/quick-serve-eight.vercel.app?via=project-dashboard-alias-list&p=1&page=/)
 
+# Pages
+
+### Admin
+Manage Orders and products
+
+`/admin/products`
+
+### Orders
+Orders Ready for pickup
+
+`/orders`
+
 ## Getting Started
 
 First, run the development server:
